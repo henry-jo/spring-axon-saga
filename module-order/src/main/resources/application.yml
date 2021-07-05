@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:mysql://localhost/individual_dev?characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        query:
+          plan_cache_max_size: 32
+          plan_parameter_metadata_max_size: 64
+
+axon:
+  serializer:
+    general: jackson
+    events: jackson
+    messages: jackson
+  axonserver:
+    servers: localhost:8124
+
+logging:
+  level:
+    com.cqrs.command: debug
+    org:
+      axonframework: debug
+      springframework:
+        transaction: DEBUG
+        orm:
+          jpa: DEBUG
